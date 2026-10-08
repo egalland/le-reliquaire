@@ -1,0 +1,10 @@
+export type Point={lat:number;lng:number};
+export type Mission=Point&{id:string;name:string;title:string;relic:string;symbol:string;minutes:number;radius:number;story:string;history:string;source:string;question:string;options:string[];answers:string[];hints:string[];explanation:string;bonus:string;bonusPoints:number};
+export type Campaign={title:string;intro:string;duration:number;points:number;hintPenalty:number;missions:Mission[];finale:{question:string;options:string[];answer:string;explanation:string;points:number}};
+export type Progress={mission_id:string;status:string;hints:number;errors:number;points:number;cooldown_until:number;completed_at:number|null;opened_at:number|null;revealedHints?:string[];explanation?:string};
+export type Team={id:string;name:string;members:string[];score:number;penalty:number;lat:number|null;lng:number|null;accuracy:number|null;located_at:number|null;distance:number;steps:number;steps_supported:number;finished_at:number|null;progress:Progress[];bonus:number;final_points:number;elapsed:number;final_status:string};
+export type Session={id:string;code:string;name:string;mode:"terrain"|"screen";status:"lobby"|"running"|"paused"|"ended";duration:number;started_at:number|null;deadline:number|null;paused_at:number|null;paused_ms:number;created_at:number;campaign:Campaign;remaining:number};
+export type Message={id:string;team_id:string|null;channel:string;author:string;body:string;created_at:number};
+export type Photo={id:string;team_id:string;mission_id:string;caption:string;points:number;reviewed:number;created_at:number;url:string;team_name:string};
+export type Event={id:string;team_id:string|null;kind:string;detail:string;created_at:number;team_name?:string};
+export type Snapshot={session:Session;teams:Team[];messages:Message[];photos:Photo[];events:Event[];mine:string|null;role:"captain"|"admin"|"guest";serverNow:number};
